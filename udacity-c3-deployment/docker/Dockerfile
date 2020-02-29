@@ -1,4 +1,3 @@
 FROM nginx:alpine
 
-COPY ngnix.conf /etc/ngnix/ngnix.conf
-
+COPY nginx.conf /etc/nginx/nginx.conf
