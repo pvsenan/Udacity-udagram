@@ -20,9 +20,5 @@ before_install:
 
 install:
   - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
-
-  deploy:
-    provider: script
-    script: bash docker_push
-    on:
-      branch: master  
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml push
