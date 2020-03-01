@@ -4,8 +4,10 @@ import { sequelize } from './sequelize';
 import { IndexRouter } from './controllers/v0/index.router';
 
 import bodyParser from 'body-parser';
-
+import { config } from './config/config';
 import { V0MODELS } from './controllers/v0/model.index';
+
+const c = config.dev;
 
 (async () => {
   await sequelize.addModels(V0MODELS);
@@ -33,7 +35,7 @@ import { V0MODELS } from './controllers/v0/model.index';
 
   // Start the Server
   app.listen( port, () => {
-      console.log( `server running http://localhost:${ port }` );
+      console.log( `server running ` + c.url );
       console.log( `press CTRL+C to stop server` );
   } );
 })();
